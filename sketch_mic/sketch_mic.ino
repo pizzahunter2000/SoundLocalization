@@ -3,7 +3,7 @@ int sensorPin2 = A1;
 int sensorPin3 = A2;
 int sensorPin4 = A3;
 int micValue = 0;
-int period = 30;
+int period = 100;
 int LED1 = 10;
 int LED2 = 11;
 int LED3 = 12;
@@ -118,15 +118,16 @@ void loop() {
   char* ledsArray = leds(sumPrev1, sumPrev2, sumPrev3, sumPrev4);
   handleLeds(ledsArray);
   
-  /*Serial.print(",");
+  Serial.print(",");
   Serial.print(sumPrev1);
   Serial.print(",");
   Serial.print(sumPrev2);
   Serial.print(",");
   Serial.print(sumPrev3);
   Serial.print(",");
-  Serial.print(sumPrev4);*/
+  Serial.print(sumPrev4);
 
+/*
   Serial.print(",");
   Serial.print(ledsArray[0]);
   Serial.print(",");
@@ -134,7 +135,7 @@ void loop() {
   Serial.print(",");
   Serial.print(ledsArray[2]);
   Serial.print(",");
-  Serial.print(ledsArray[3]);
+  Serial.print(ledsArray[3]);*/
 
   Serial.println("");
   //delay(10);
