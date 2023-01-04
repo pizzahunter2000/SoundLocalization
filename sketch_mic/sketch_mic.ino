@@ -4,10 +4,11 @@ int sensorPin3 = A2;
 int sensorPin4 = A3;
 int micValue = 0;
 int period = 100;
-int LED1 = 10;
-int LED2 = 11;
-int LED3 = 12;
-int LED4 = 13;
+int LED1 = 6;
+int LED2 = 7;
+int LED3 = 8;
+int LED4 = 9;
+const int threshold = 20;
 
 void setup() {
   // put your setup code here, to run once:
@@ -25,16 +26,16 @@ void setup() {
 }
 
 char* leds(int par1, int par2, int par3, int par4) {
-  if (par1 > par2 && par1 > par3 && par1 > par4) {
+  if (par1 > par2 && par1 > par3 && par1 > par4 && par1>threshold) {
     return "1000";
   }
-  else if (par2 > par1 && par2 > par3 && par2 > par4) {
+  else if (par2 > par1 && par2 > par3 && par2 > par4 && par2>threshold) {
     return "0100";
   }
-  else if (par3 > par1 && par3 > par2 && par3 > par4) {
+  else if (par3 > par1 && par3 > par2 && par3 > par4 && par3>threshold) {
     return "0010";
   }
-  else if (par4 > par1 && par4 > par2 && par4 > par3) {
+  else if (par4 > par1 && par4 > par2 && par4 > par3 && par4>threshold) {
     return "0001";
   }
   else {
@@ -115,9 +116,10 @@ void loop() {
     }    
   }
 
-  char* ledsArray = leds(sumPrev1, sumPrev2, sumPrev3, sumPrev4);
+  char* ledsArray = leds(sum1, sum2, sum3, sum4);
   handleLeds(ledsArray);
   
+  /*
   Serial.print(",");
   Serial.print(sumPrev1);
   Serial.print(",");
@@ -125,7 +127,7 @@ void loop() {
   Serial.print(",");
   Serial.print(sumPrev3);
   Serial.print(",");
-  Serial.print(sumPrev4);
+  Serial.print(sumPrev4);*/
 
 /*
   Serial.print(",");
