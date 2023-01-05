@@ -11,7 +11,7 @@ int LED4 = 9;
 const int threshold = 20;
 
 void setup() {
-  // put your setup code here, to run once:
+
   Serial.begin(9600);
   
   pinMode(sensorPin1, INPUT);
@@ -66,7 +66,7 @@ void handleLeds(char ledsArray[4]) {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
   //micValue = analogRead(sensorPin);
   int sum1 = 0, sumPrev1 = 0;
   int sum2 = 0, sumPrev2 = 0;
@@ -92,7 +92,8 @@ void loop() {
   Serial.print(",");
   Serial.print(sum4);
   Serial.print(",");
-  
+
+  /*
   if(sum1 > sumPrev1 + 50 || sum2 > sumPrev2 + 50 || sum3 > sumPrev3 + 50 || sum4 > sumPrev4 + 50){
     while(sum1 > sumPrev1){
       sumPrev1 = sum1;
@@ -115,6 +116,7 @@ void loop() {
       sum4 /= period;
     }    
   }
+  */
 
   char* ledsArray = leds(sum1, sum2, sum3, sum4);
   handleLeds(ledsArray);
